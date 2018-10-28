@@ -101,12 +101,10 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
                     val maxBearing = viewModel.location.value?.bearingTo(maxLocation)!!
                     val minBearing = viewModel.location.value?.bearingTo(minLocation)!!
 
-                    Log.v("ProxisActivity", "azimuth: $azimuth\tminBearing: $minBearing\tmaxBearing: $maxBearing")
 
                     if (azimuth in minBearing..maxBearing) {
                         if (!directionSpoken[i]) {
                             viewModel.displayText.setUniqueValue(viewModel.pointOfInterest.value?.specialDirectionText!![i])
-                            Log.v("ProximityActivity", "in range")
                             playSound(i)
 
 
@@ -116,7 +114,6 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
                         viewModel.displayText.setUniqueValue("Searching For Directions")
 
                         directionSpoken[i] = false
-                        Log.v("ProximityActivity", "out of range")
                     }
                 }
             }
@@ -159,7 +156,6 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
             }
 
             override fun onShakeStopped() {
-                Log.v("ProxiActivity", "onShakeStopped")
                 FirebaseDatabase.getInstance()
                         .getReference("${viewModel.majorNumber.value}")
                         .addListenerForSingleValueEvent(object : ValueEventListener, TextToSpeech.OnInitListener {
@@ -175,15 +171,12 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
                                 if (p0.exists() && !mainTextSpoken) {
                                     poi = p0.getValue(PointOfInterest::class.java)!!
                                     viewModel.pointOfInterest.setUniqueValue(poi)
-                                    Log.v("ProxisActivity", "${viewModel.pointOfInterest.value}")
 
                                     val speakBox = Speakerbox(this@ProxiActivity.application)
                                     speakBox.play(poi.text)
                                     setupOrientation()
-//                                    sensey.startRotationAngleDetection(setupRotation())
                                     mainTextSpoken = true
                                 } else {
-                                    Log.v("ProxisActivity", "${viewModel.majorNumber.value} poi does not exist")
 
                                 }
                             }
@@ -247,11 +240,9 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
 
             override fun onSwipe(p0: Int) {
 
-                Log.v("ProxisActivity", "swipeDirection: $p0")
                 when (p0) {
                     TouchTypeDetector.SWIPE_DIR_DOWN -> {
                         val index = directionSpoken.indexOf(true)
-                        Log.v("ProxisActivity", "index: $index")
                         if (index != -1) {
                             val speakBox = Speakerbox(this@ProxiActivity.application)
                             speakBox.play(poi.specialDirectionText!![index])
@@ -301,7 +292,6 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
                 if (tilt in minBeta..maxBeta) {
                     if (!directionSpoken[i]) {
                         viewModel.displayText.setUniqueValue(viewModel.pointOfInterest.value?.specialDirectionText!![i])
-                        Log.v("ProximityActivity", "in range")
                         playSound(i)
 
 
@@ -311,7 +301,6 @@ class ProxiActivity : AppCompatActivity(), SensorEventListener, LocationListener
                     viewModel.displayText.setUniqueValue("Searching For Directions")
 
                     directionSpoken[i] = false
-                    Log.v("ProximityActivity", "out of range")
                 }
             }
 
