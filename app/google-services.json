@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "52662248087",
+    "firebase_url": "https://proxisee-7a0ae.firebaseio.com",
+    "project_id": "proxisee-7a0ae",
+    "storage_bucket": "proxisee-7a0ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52662248087:android:62fcdee7679e9859",
+        "android_client_info": {
+          "package_name": "com.see.proxi.proxisee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52662248087-agmjt5sora8ffalalobbj50h6qiorj3i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.see.proxi.proxisee",
+            "certificate_hash": "9c9b0e9054c2b74df287c1fde3b4d51ea913d54f"
+          }
+        },
+        {
+          "client_id": "52662248087-urt4id4h4bbqi8frast909htc8up94b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg7wZ1YlEHc2aSLvIL3bct5ga7w2kjbr0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52662248087-urt4id4h4bbqi8frast909htc8up94b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
